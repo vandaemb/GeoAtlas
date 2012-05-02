@@ -122,6 +122,11 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
                 outputConfig: {
                     emptyText: "Search Address ..."
 					}
+            }, {
+				// GEOATLAS mod: add a streetview tool. 
+				// path: /app/static/script/app/GeoExplorer/Streetview.js
+                ptype: "app_streetviewtool", format: 'grid', toggleGroup: this.toggleGroup,
+                actionTarget: {target: "paneltbar", index: 22}
             }
         ];
         
