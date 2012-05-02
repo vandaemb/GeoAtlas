@@ -127,7 +127,54 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
 				// path: /app/static/script/app/GeoExplorer/Streetview.js
                 ptype: "app_streetviewtool", format: 'grid', toggleGroup: this.toggleGroup,
                 actionTarget: {target: "paneltbar", index: 22}
-            }
+            }, {
+				// GEOATLAS mod: all tools below are needed for querysupport.
+				ptype: "gxp_featuremanager",
+				id: "generic-featuremanager",
+				maxFeatures: 50,
+				symbolizer: {
+					pointRadius: 1,
+					graphicName: "circle",
+					fillColor: "#ff0000",
+					fillOpacity: 0,
+					strokeWidth: 1,
+					strokeColor: "#ffcc33",
+					strokeOpacity: 0
+					}
+			},{
+				ptype: "gxp_wmsfilterview",
+				featureManager: "generic-featuremanager"
+			},{
+				ptype: "gxp_featuregrid",
+				id: "featuregrid",
+				featureManager: "generic-featuremanager",
+				outputTarget: "grid",
+				outputConfig: {id: "featuregrid-output"},
+				displayMode: "selected",
+				alwaysDisplayOnMap: true,
+				selectOnMap: true,
+				autoExpand: true,
+				autoCollapse: true,
+				tolerance: 8
+			},{
+				ptype: "gxp_zoomtoselectedfeatures",
+				featureManager: "generic-featuremanager",
+				actionTarget: "featuregrid-output.bbar",
+				buttonText: "Zoom to selection"
+			},{
+				ptype: "gxp_queryform",
+				id: "query-form",
+				featureManager: "generic-featuremanager",
+				autoHide: true,
+				actionTarget: ["layers.tbar", "layers.contextMenu"],
+				outputConfig: {
+					width: 350,
+					title: "Query Layer",
+					modal: true,
+					closeAction: "hide"
+					}
+			}
+
         ];
         
         GeoExplorer.Composer.superclass.constructor.apply(this, arguments);

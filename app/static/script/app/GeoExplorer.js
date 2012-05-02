@@ -358,7 +358,35 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
             tbar: this.toolbar,
             items: [
                 this.mapPanelContainer,
-                westPanel
+                westPanel,
+                // GEOATLAS mod. Add panel for query output.
+                {
+					region: "south",
+					id: "grid",
+					layout: "fit",
+					height: 200,
+					border: false,
+					split: true,
+					collapsible: true,
+					collapsed: true,
+					collapseMode: "mini",
+					header: false,
+					listeners: {
+						collapse: function() {
+							this.tools["generic-featuremanager"].clearFeatures();
+						},
+						beforeexpand: function() {
+							var featureStore = this.tools["generic-featuremanager"].featureStore;
+							if (!(featureStore && featureStore.getCount())) {
+								//TODO use action's handler in gxp.plugins.Tool to
+								// de-uglify this.
+								featureStore && this.tools["query-form"].actions[0].items[0].fireEvent("click");
+								return false;
+							}
+						},
+						scope: this
+					}
+				}
             ]
         }];
         
