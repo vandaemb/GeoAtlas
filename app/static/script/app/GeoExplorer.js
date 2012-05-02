@@ -267,7 +267,8 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
         this.toolbar = new Ext.Toolbar({
             disabled: true,
             id: 'paneltbar',
-            items: this.createTools()
+            //GEOATLAS mod : added a container for a google geocoder, so it will render in time.
+            items: [this.createTools(), {xtype: "container",width: 280,id: "geocoder"}]
         });
         this.on("ready", function() {
             // enable only those items that were not specifically disabled

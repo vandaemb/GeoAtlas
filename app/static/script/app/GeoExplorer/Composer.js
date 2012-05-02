@@ -114,6 +114,14 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
             }, {
                 ptype: "gxp_googleearth",
                 actionTarget: {target: "paneltbar", index: 17}
+            }, {
+				// GEOATLAS mod: add a geocoder. Don't forget to add it
+				// to buildjs.cfg
+                ptype: "gxp_googlegeocoder",
+                outputTarget: "geocoder",
+                outputConfig: {
+                    emptyText: "Search Address ..."
+					}
             }
         ];
         
