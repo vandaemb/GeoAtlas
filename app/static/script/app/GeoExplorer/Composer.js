@@ -63,12 +63,17 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
             }, {
                 ptype: "gxp_addlayers",
                 actionTarget: "layers.tbar",
-                upload: true
+                uploadSource: "local",
+                postUploadAction: {
+                    plugin: "layerproperties",
+                    outputConfig: {activeTab: 2}
+                }
             }, {
                 ptype: "gxp_removelayer",
                 actionTarget: ["layers.tbar", "layers.contextMenu"]
             }, {
                 ptype: "gxp_layerproperties",
+                id: "layerproperties",
                 actionTarget: ["layers.tbar", "layers.contextMenu"]
             }, {
                 ptype: "gxp_styler",
@@ -232,10 +237,10 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
         this.showLogin();
     },
 
-    /** private: method[showLoginDialog]
+    /** private: method[authenticate]
      * Show the login dialog for the user to login.
      */
-    showLoginDialog: function() {
+    authenticate: function() {
         var panel = new Ext.FormPanel({
             url: "../login/",
             frame: true,
@@ -291,7 +296,6 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
             panel.buttons[0].disable();
             panel.getForm().submit({
                 success: function(form, action) {
-                    this.setAuthorizedRoles(["ROLE_ADMINISTRATOR"]);
                     Ext.getCmp('paneltbar').items.each(function(tool) {
                         if (tool.needsAuthorization === true) {
                             tool.enable();
@@ -299,7 +303,9 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
                     });
                     var user = form.findField('username').getValue();
                     this.setCookieValue(this.cookieParamName, user);
+                    this.setAuthorizedRoles(["ROLE_ADMINISTRATOR"]);
                     this.showLogout(user);
+                    win.un("beforedestroy", this.cancelAuthentication, this);
                     win.close();
                 },
                 failure: function(form, action) {
@@ -322,7 +328,11 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
             plain: true,
             border: false,
             modal: true,
-            items: [panel]
+            items: [panel],
+            listeners: {
+                beforedestroy: this.cancelAuthentication,
+                scope: this
+            }
         });
         win.show();
     },
@@ -342,7 +352,7 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
      */
     showLogin: function() {
         var text = this.loginText;
-        var handler = this.showLoginDialog;
+        var handler = this.authenticate;
         this.applyLoginState('login', text, handler, this);
     },
 
@@ -388,20 +398,20 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
         tools.unshift("-");
         tools.unshift(new Ext.Button({
             tooltip: this.exportMapText,
-            needsAuthorization: true,
-            disabled: !this.isAuthorized(),
             handler: function() {
-                this.save(this.showEmbedWindow);
+                this.doAuthorized(["ROLE_ADMINISTRATOR"], function() {
+                    this.save(this.showEmbedWindow);
+                }, this);
             },
             scope: this,
             iconCls: 'icon-export'
         }));
         tools.unshift(new Ext.Button({
             tooltip: this.saveMapText,
-            needsAuthorization: true,
-            disabled: !this.isAuthorized(),
             handler: function() {
-                this.save(this.showUrl);
+                this.doAuthorized(["ROLE_ADMINISTRATOR"], function() {
+                    this.save(this.showUrl);
+                }, this);
             },
             scope: this,
             iconCls: "icon-save"
