@@ -24,18 +24,18 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
     cookieParamName: 'geoexplorer-user',
 
     // Begin i18n.
-    saveMapText: "Save Map",
-    exportMapText: "Publish Map",
-    toolsTitle: "Choose tools to include in the toolbar:",
+    saveMapText: "Kaart opslaan",
+    exportMapText: "Kaart publiceren",
+    toolsTitle: "Kies uit de beschikbare gereedschappen:",
     previewText: "Preview",
-    backText: "Back",
-    nextText: "Next",
-    loginText: "Login",
-    logoutText: "Logout, {user}",
-    loginErrorText: "Invalid username or password.",
-    userFieldText: "User",
-    passwordFieldText: "Password", 
-    saveErrorText: "Trouble saving: ",
+    backText: "Terug",
+    nextText: "Verder",
+    loginText: "Inloggen",
+    logoutText: "Uitloggen, {user}",
+    loginErrorText: "Ongeldige login or wachtwoord.",
+    userFieldText: "Gebruiker",
+    passwordFieldText: "Wachtw.:", 
+    saveErrorText: "Problemen met opslaan: ",
     // End i18n.
 
     constructor: function(config) {
@@ -59,7 +59,17 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
                     autoScroll: true,
                     tbar: []
                 },
-                outputTarget: "tree"
+                groups: {
+					"default": "Eigen Lagen", 
+					"POI": "Referentiepunten",
+					"ongeval": "Ongevalgegevens",
+					"wegennet": "Wegennet",
+					"background": {
+						title: "Onderlagen", 
+						exclusive: true
+						}
+					},
+					outputTarget: "tree"
             }, {
                 ptype: "gxp_addlayers",
                 actionTarget: "layers.tbar",
@@ -85,7 +95,7 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
                 ptype: "gxp_navigation", toggleGroup: this.toggleGroup,
                 actionTarget: {target: "paneltbar", index: 6}
             }, {
-                ptype: "gxp_wmsgetfeatureinfo", format: 'grid', toggleGroup: this.toggleGroup,
+                ptype: "gxp_wmsgetfeatureinfo", format: 'html', toggleGroup: this.toggleGroup,
                 actionTarget: {target: "paneltbar", index: 7}
             }, {
                 ptype: "gxp_featuremanager",
@@ -125,60 +135,14 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
                 ptype: "gxp_googlegeocoder",
                 outputTarget: "geocoder",
                 outputConfig: {
-                    emptyText: "Search Address ..."
+                    emptyText: "Adres zoeken ..."
 					}
             }, {
 				// GEOATLAS mod: add a streetview tool. 
 				// path: /app/static/script/app/GeoExplorer/Streetview.js
                 ptype: "app_streetviewtool", format: 'grid', toggleGroup: this.toggleGroup,
-                actionTarget: {target: "paneltbar", index: 22}
-            }, {
-				// GEOATLAS mod: all tools below are needed for querysupport.
-				ptype: "gxp_featuremanager",
-				id: "generic-featuremanager",
-				maxFeatures: 50,
-				symbolizer: {
-					pointRadius: 1,
-					graphicName: "circle",
-					fillColor: "#ff0000",
-					fillOpacity: 0,
-					strokeWidth: 1,
-					strokeColor: "#ffcc33",
-					strokeOpacity: 0
-					}
-			},{
-				ptype: "gxp_wmsfilterview",
-				featureManager: "generic-featuremanager"
-			},{
-				ptype: "gxp_featuregrid",
-				id: "featuregrid",
-				featureManager: "generic-featuremanager",
-				outputTarget: "grid",
-				outputConfig: {id: "featuregrid-output"},
-				displayMode: "selected",
-				alwaysDisplayOnMap: true,
-				selectOnMap: true,
-				autoExpand: true,
-				autoCollapse: true,
-				tolerance: 8
-			},{
-				ptype: "gxp_zoomtoselectedfeatures",
-				featureManager: "generic-featuremanager",
-				actionTarget: "featuregrid-output.bbar",
-				buttonText: "Zoom to selection"
-			},{
-				ptype: "gxp_queryform",
-				id: "query-form",
-				featureManager: "generic-featuremanager",
-				autoHide: true,
-				actionTarget: ["layers.tbar", "layers.contextMenu"],
-				outputConfig: {
-					width: 350,
-					title: "Query Layer",
-					modal: true,
-					closeAction: "hide"
-					}
-			}
+                actionTarget: {target: "paneltbar", index: 18}
+            }
 
         ];
         

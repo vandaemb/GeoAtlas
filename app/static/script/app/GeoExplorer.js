@@ -78,20 +78,21 @@ Ext.override(Ext.dd.DragTracker, {
 var GeoExplorer = Ext.extend(gxp.Viewer, {
 
     // Begin i18n.
-    zoomSliderText: "<div>Zoom Level: {zoom}</div><div>Scale: 1:{scale}</div>",
-    loadConfigErrorText: "Trouble reading saved configuration: <br />",
-    loadConfigErrorDefaultText: "Server Error.",
-    xhrTroubleText: "Communication Trouble: Status ",
-    layersText: "Layers",
-    titleText: "Title",
-    bookmarkText: "Bookmark URL",
-    permakinkText: 'Permalink',
-    appInfoText: "GeoExplorer",
-    aboutText: "About GeoExplorer",
-    mapInfoText: "Map Info",
-    descriptionText: "Description",
-    contactText: "Contact",
-    aboutThisMapText: "About this Map",
+        zoomSliderText: "<div>Zoomniveau: {zoom}</div><div>Schaal: 1:{scale}</div>",
+        loadConfigErrorText: "Problemen met inladen van de opgeslagen configuratie: <br />",
+        loadConfigErrorDefaultText: "Server Error.",
+        xhrTroubleText: "Communicatieproblemen: Status ",
+        layersText: "Lagen",
+        titleText: "Titel",
+        zoomLevelText: "Zoomniveau",
+        bookmarkText: "Favorieten URL",
+        permakinkText: 'Permalink',
+        appInfoText: "GeoAtlas",
+        aboutText: "About GeoAtlas",
+        mapInfoText: "Kaartinfo",
+        descriptionText: "Beschrijving",
+        contactText: "Contact",
+        aboutThisMapText: "Over deze applicatie",
     // End i18n.
     
     /**
@@ -358,35 +359,7 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
             tbar: this.toolbar,
             items: [
                 this.mapPanelContainer,
-                westPanel,
-                // GEOATLAS mod. Add panel for query output.
-                {
-					region: "south",
-					id: "grid",
-					layout: "fit",
-					height: 200,
-					border: false,
-					split: true,
-					collapsible: true,
-					collapsed: true,
-					collapseMode: "mini",
-					header: false,
-					listeners: {
-						collapse: function() {
-							this.tools["generic-featuremanager"].clearFeatures();
-						},
-						beforeexpand: function() {
-							var featureStore = this.tools["generic-featuremanager"].featureStore;
-							if (!(featureStore && featureStore.getCount())) {
-								//TODO use action's handler in gxp.plugins.Tool to
-								// de-uglify this.
-								featureStore && this.tools["query-form"].actions[0].items[0].fireEvent("click");
-								return false;
-							}
-						},
-						scope: this
-					}
-				}
+                westPanel
             ]
         }];
         
