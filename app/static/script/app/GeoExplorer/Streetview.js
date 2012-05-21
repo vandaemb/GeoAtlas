@@ -98,6 +98,8 @@ gxp.plugins.streetviewtool = Ext.extend(gxp.plugins.Tool, {
         
         var actions = gxp.plugins.WMSGetFeatureInfo.superclass.addActions.call(this, [{
             tooltip: this.infoActionTip,
+            menuText: "Streetview",
+            text: "Streetview",
             iconCls: "gxp-icon-play",
             toggleGroup: this.toggleGroup,
             enableToggle: true,
