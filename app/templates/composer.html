@@ -29,7 +29,7 @@
                 "gis.wegenenverkeer.be:8080": "AIzaSyC0dy0fh5gqiW4Og2k9xi60EZnMQWNfhlo"
             },
             about: {
-                title: "Basiskaart GeoAtlas v1.0",
+                title: "Basiskaart voor GeoAtlas 0.4",
                 "abstract": "De GeoAtlas basiskaart met enkele aangevinkte lagen. Voor nog meer lagen, klik op de groene plus boven de lagencatalogus.",
                 contact: "Voor meer info en vragen, contacteer <a href='mailto:marc.vandael@mow.vlaanderen.be'>Marc Vandael, gis cel Limburg</a>."
             },
@@ -51,14 +51,15 @@
                     title: "GOOGLE"
                 },
                 mapquest: {
-                    ptype: "gxp_mapquestsource"
+                    ptype: "gxp_mapquestsource",
+                    title: "MapQuest OpenStreetMap"
                 }
             },
             map: { 
                 projection: "EPSG:102113",
                 
                 
-                //maxExtent: [524569.78866095, 6549710.1079428, 680654.20039755, 6681946.1668578],
+                
                 restrictedExtent: [524569.78866095, 6549710.1079428, 680654.20039755, 6681946.1668578],
                 
                 layers: [
@@ -101,11 +102,12 @@
                     {
                         source: "local",
                         name: "limburg:WEG_gewestwegen",
-
+						group:"wegennet",
                         visibility: true
                     },
                     {
                         source: "local",
+                        group:"wegennet",
                         name: "limburg:WEG_gemeentewegen",
 
                         visibility: false
@@ -147,7 +149,18 @@
                         name: "limburg:ONG_GEVAARLIJKEPUNTEN0608",
                         group:"ongeval",
                         visibility: false
+                    },
+                //UITSNEDE LIMBURG
+                    {
+                        source: "local",
+                        name: "limburg:GRE_UITSNEDELIMBURG",
+                        group:"hidden",
+                        visibility: true
                     }
+                
+                
+                
+                
                 ],
                 center: [607043.84979312, 6618170.9297806],
                 zoom: 10

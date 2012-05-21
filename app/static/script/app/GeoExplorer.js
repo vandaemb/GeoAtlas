@@ -87,8 +87,8 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
         zoomLevelText: "Zoomniveau",
         bookmarkText: "Favorieten URL",
         permakinkText: 'Permalink',
-        appInfoText: "GeoAtlas",
-        aboutText: "About GeoAtlas",
+        appInfoText: "GeoAtlas menu",
+        aboutText: "Over GeoAtlas",
         mapInfoText: "Kaartinfo",
         descriptionText: "Beschrijving",
         contactText: "Contact",
@@ -257,7 +257,7 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
         var westPanel = new Ext.Panel({
             id: "tree",
             region: "west",
-            width: 250,
+            width: 300,
             split: true,
             collapsible: true,
             collapseMode: "mini",
@@ -269,7 +269,7 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
             disabled: true,
             id: 'paneltbar',
             //GEOATLAS mod : added a container for a google geocoder, so it will render in time.
-            items: [this.createTools(), {xtype: "container",width: 280,id: "geocoder"}]
+            items: [this.createTools(), {xtype: "container",width: 280,id: "geocoder",index: 23}]
         });
         this.on("ready", function() {
             // enable only those items that were not specifically disabled

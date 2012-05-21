@@ -34,7 +34,7 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
     logoutText: "Uitloggen, {user}",
     loginErrorText: "Ongeldige login or wachtwoord.",
     userFieldText: "Gebruiker",
-    passwordFieldText: "Wachtw.:", 
+    passwordFieldText: "WW", 
     saveErrorText: "Problemen met opslaan: ",
     // End i18n.
 
@@ -142,6 +142,11 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
 				// path: /app/static/script/app/GeoExplorer/Streetview.js
                 ptype: "app_streetviewtool", format: 'grid', toggleGroup: this.toggleGroup,
                 actionTarget: {target: "paneltbar", index: 18}
+            }, {
+				// GEOATLAS mod: map properties for zoom levels
+                ptype: "gxp_mapproperties", 
+                actionTarget: {target: "paneltbar", index: 1}
+                
             }
 
         ];
