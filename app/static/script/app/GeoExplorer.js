@@ -87,7 +87,7 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
         zoomLevelText: "Zoomniveau",
         bookmarkText: "Favorieten URL",
         permakinkText: 'Permalink',
-        appInfoText: "GeoAtlas menu",
+        appInfoText: "GeoAtlas",
         aboutText: "Over GeoAtlas",
         mapInfoText: "Kaartinfo",
         descriptionText: "Beschrijving",

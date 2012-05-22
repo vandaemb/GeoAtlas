@@ -64,10 +64,11 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
 					"POI": "Referentiepunten",
 					"ongeval": "Ongevalgegevens",
 					"wegennet": "Wegennet",
-					"geoloket": {
-						title: "AWV-Geoloket", 
+					"background": {
+						title: "Onderlagen", 
 						exclusive: true
-						},
+						}
+
 					"background": {
 						title: "Onderlagen", 
 						exclusive: true
