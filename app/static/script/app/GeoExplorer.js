@@ -269,7 +269,21 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
             disabled: true,
             id: 'paneltbar',
             //GEOATLAS mod : added a container for a google geocoder, so it will render in time.
-            items: [this.createTools(), {xtype: "container",width: 280,id: "geocoder",index: 23}]
+				items: [
+				this.createTools(), 
+				{xtype: "container",width: 280,id: "geocoder"}
+				//, 
+				//{
+					//xtype: "gxp_autocompletecombo",
+					//outputTarget: "identcombo",
+					//url: "http://gis.wegenenverkeer.be:8080/geoserver/wfs",
+					//fieldName: "ident8",
+					//featureType: "REF_KMPT",
+					//featurePrefix: "urilimburg",
+					//emptyText: "Bevraag ident8..."
+				//}
+			]
+			
         });
         this.on("ready", function() {
             // enable only those items that were not specifically disabled

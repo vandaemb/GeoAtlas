@@ -17,6 +17,18 @@
 
         Ext.BLANK_IMAGE_URL = "../theme/app/img/blank.gif";
         OpenLayers.ImgPath = "../theme/app/img/";
+        
+        var llprefkx = 'limburg:'
+        var prefixpoly = 'Vlakken_';
+        var prefixpoint = 'Puntenlaag_';
+        var prefixline = 'Lijnen_';
+        var suffixuser = 'vandaemb';
+        
+        var custompoly = llprefkx + prefixpoly + suffixuser;
+        var custompoint = llprefkx + prefixpoint + suffixuser;
+        var customline = llprefkx + prefixline + suffixuser;
+        
+        document.write(custompoly);
 
         var app = new GeoExplorer.Composer({
             authStatus: {{status}},
@@ -29,8 +41,8 @@
                 "gis.wegenenverkeer.be:8080": "AIzaSyC0dy0fh5gqiW4Og2k9xi60EZnMQWNfhlo"
             },
             about: {
-                title: "Basiskaart voor GeoAtlas 0.4",
-                "abstract": "De GeoAtlas basiskaart met enkele aangevinkte lagen. Voor nog meer lagen, klik op de groene plus boven de lagencatalogus.",
+                title: "GeoAtlas 0.4",
+                "abstract": "GeoAtlas, de online bron van gis-informatie van het Agentschap Wegen en Verkeer, provincie Limburg. http://gis.wegenenverkeer.be",
                 contact: "Voor meer info en vragen, contacteer <a href='mailto:marc.vandael@mow.vlaanderen.be'>Marc Vandael, gis cel Limburg</a>."
             },
             defaultSourceType: "gxp_wmscsource",
@@ -205,9 +217,13 @@
                         group:"geoloket",
                         type:"OpenLayers.Layer",
                         args:["Geen data uit het geoloket laden"]
+                    }, 
+                
+                //PERSOONLIJKE LAGEN
+                {
+                        source: "local",
+                        name: custompoly
                     }
-                
-                
                 
                 ],
                 center: [607043.84979312, 6618170.9297806],
