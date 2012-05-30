@@ -17,19 +17,8 @@
 
         Ext.BLANK_IMAGE_URL = "../theme/app/img/blank.gif";
         OpenLayers.ImgPath = "../theme/app/img/";
-        
-        var llprefkx = 'limburg:'
-        var prefixpoly = 'Vlakken_';
-        var prefixpoint = 'Puntenlaag_';
-        var prefixline = 'Lijnen_';
-        var suffixuser = 'vandaemb';
-        
-        var custompoly = llprefkx + prefixpoly + suffixuser;
-        var custompoint = llprefkx + prefixpoint + suffixuser;
-        var customline = llprefkx + prefixline + suffixuser;
-        
-        document.write(custompoly);
 
+        
         var app = new GeoExplorer.Composer({
             authStatus: {{status}},
             proxy: "../proxy/?url=",
@@ -42,7 +31,8 @@
             },
             about: {
                 title: "GeoAtlas 0.4",
-                "abstract": "GeoAtlas, de online bron van gis-informatie van het Agentschap Wegen en Verkeer, provincie Limburg. http://gis.wegenenverkeer.be",
+                "abstract": "GeoAtlas, de online kaartenbak van het Agentschap Wegen en Verkeer, provincie Limburg. " + "GeoAtlas is een applicatie voor het samenstellen en publiceren van " +
+								"web gebaseerde kaarten. Ze is dus niet te verwarren met het AWV-geoloket (intranet).",
                 contact: "Voor meer info en vragen, contacteer <a href='mailto:marc.vandael@mow.vlaanderen.be'>Marc Vandael, gis cel Limburg</a>."
             },
             defaultSourceType: "gxp_wmscsource",
@@ -58,10 +48,10 @@
                 ol: {
                     ptype: "gxp_olsource"
                 },
-                google: {
-                    ptype: "gxp_googlesource",
-                    title: "GOOGLE"
-                },
+                //google: {
+                //    ptype: "gxp_googlesource",
+                //    title: "GOOGLE"
+                //},
                 mapquest: {
                     ptype: "gxp_mapquestsource",
                     title: "MapQuest OpenStreetMap"
@@ -73,7 +63,13 @@
                 
                 
                 restrictedExtent: [524569.78866095, 6549710.1079428, 680654.20039755, 6681946.1668578],
+                numZoomLevels: 21,               
+                center: [607043.84979312, 6618170.9297806],
+                zoom: 10,
+                //maxResolution: "auto",
                 
+                
+						
                 layers: [
                 
                 //Onderlagen
@@ -105,8 +101,8 @@
                         group: "background"
                     },  
                     {
-                        source: "google",
-                        name: "HYBRID",
+                        source: "bing",
+                        name: "AerialWithLabels",
                         group: "background"
                     },  
                     
@@ -217,17 +213,10 @@
                         group:"geoloket",
                         type:"OpenLayers.Layer",
                         args:["Geen data uit het geoloket laden"]
-                    }, 
-                
-                //PERSOONLIJKE LAGEN
-                {
-                        source: "local",
-                        name: custompoly
                     }
+              
                 
-                ],
-                center: [607043.84979312, 6618170.9297806],
-                zoom: 10
+                ]
             }
         });
         

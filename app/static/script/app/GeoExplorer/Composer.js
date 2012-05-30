@@ -78,6 +78,7 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
                 ptype: "gxp_addlayers",
                 actionTarget: "layers.tbar",
                 uploadSource: "local",
+                search: false,
                 postUploadAction: {
                     plugin: "layerproperties",
                     outputConfig: {activeTab: 2}
@@ -150,8 +151,14 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
 				// GEOATLAS mod: map properties for zoom levels
                 ptype: "gxp_mapproperties", 
                 actionTarget: {target: "paneltbar", index: 1}
-                
+            }, {
+                ptype: "gxp_geocodermetpointer" ,
+                actionTarget: {target: "paneltbar", index: 17}
+            }, {
+                ptype: "gxp_geocodermetpointer2" ,
+                actionTarget: {target: "paneltbar", index: 17}
             }
+               
 
         ];
         
