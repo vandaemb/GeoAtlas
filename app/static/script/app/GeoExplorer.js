@@ -4,13 +4,10 @@
 
 Ext.USE_NATIVE_JSON = true;
 
-// No shadows for windows, so they can be resized without the need to also
-// resize the shadow.
-// TODO remove when we have switched to CrumbPanel navigation.
+
 Ext.Window.prototype.shadow = false;
 
-// http://www.sencha.com/forum/showthread.php?141254-Ext.Slider-not-working-properly-in-IE9
-// TODO re-evaluate once we move to Ext 4
+
 Ext.override(Ext.dd.DragTracker, {
     onMouseMove: function (e, target) {
         if (this.active && Ext.isIE && !Ext.isIE9 && !e.browserEvent.button) {
@@ -35,14 +32,13 @@ Ext.override(Ext.dd.DragTracker, {
 });
 
 (function() {
-    // backwards compatibility for reading saved maps
-    // these source plugins were renamed after 2.3.2
+
     Ext.preg("gx_wmssource", gxp.plugins.WMSSource);
     Ext.preg("gx_olsource", gxp.plugins.OLSource);
     Ext.preg("gx_googlesource", gxp.plugins.GoogleSource);
     Ext.preg("gx_bingsource", gxp.plugins.BingSource);
     Ext.preg("gx_osmsource", gxp.plugins.OSMSource);
-    // use layermanager instead of layertree
+
     Ext.preg("gxp_layertree", gxp.plugins.LayerManager);
 })();
 
@@ -117,9 +113,6 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
             }
         ];
 
-        // both the Composer and the Viewer need to know about the viewerTools
-        // First row in each object is needed to correctly render a tool in the treeview
-        // of the embed map dialog. TODO: make this more flexible so this is not needed.
         config.viewerTools = [
             {
                 leaf: true,
@@ -268,7 +261,6 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
         this.toolbar = new Ext.Toolbar({
             disabled: true,
             id: 'paneltbar',
-            //GEOATLAS mod : added a container for a google geocoder, so it will render in time.
 				items: [
 				this.createTools(), 
 				{xtype: "container",width: 280,id: "geocoder"}
@@ -276,7 +268,6 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
 			
         });
         this.on("ready", function() {
-            // enable only those items that were not specifically disabled
             var disabled = this.toolbar.items.filterBy(function(item) {
                 return item.initialConfig && item.initialConfig.disabled;
             });
@@ -295,10 +286,6 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
             }
         });
         
-        // TODO: continue making this Google Earth Panel more independent
-        // Currently, it's too tightly tied into the viewer.
-        // In the meantime, we keep track of all items that the were already
-        // disabled when the panel is shown.
         var preGoogleDisabled = [];
 
         googleEarthPanel.on("show", function() {
@@ -309,7 +296,7 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
                 }
             });
             this.toolbar.disable();
-            // loop over all the tools and remove their output
+
             for (var key in this.tools) {
                 var tool = this.tools[key];
                 if (tool.outputTarget === "map") {
@@ -329,7 +316,7 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
         }, this);
 
         googleEarthPanel.on("hide", function() {
-            // re-enable all tools
+
             this.toolbar.enable();
             
             var layersContainer = Ext.getCmp("tree");
@@ -337,7 +324,7 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
             if (layersToolbar) {
                 layersToolbar.enable();
             }
-            // now go back and disable all things that were disabled previously
+
             for (var i=0, ii=preGoogleDisabled.length; i<ii; ++i) {
                 preGoogleDisabled[i].disable();
             }
@@ -416,7 +403,7 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
             {q: Ext.util.JSON.encode(this.getState())}
         );
         
-        // disregard any hash in the url, but maintain all other components
+
         var url = 
             document.location.href.split("?").shift() +
             "?" + Ext.urlEncode(params);
@@ -470,7 +457,7 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
      */
     getState: function() {
         var state = GeoExplorer.superclass.getState.apply(this, arguments);
-        // Don't persist tools
+
         delete state.tools;
         return state;
     }

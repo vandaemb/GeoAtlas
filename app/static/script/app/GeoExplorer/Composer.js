@@ -135,27 +135,22 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
                 ptype: "gxp_googleearth",
                 actionTarget: {target: "paneltbar", index: 16}
             }, {
-				// GEOATLAS mod: add a geocoder. Don't forget to add it
-				// to buildjs.cfg
                 ptype: "gxp_googlegeocoder",
                 outputTarget: "geocoder",
                 outputConfig: {
                     emptyText: "Adres zoeken ..."
 					}
             }, {
-				// GEOATLAS mod: add a streetview tool. 
-				// path: /app/static/script/app/GeoExplorer/Streetview.js
                 ptype: "app_streetviewtool", format: 'grid', toggleGroup: this.toggleGroup,
                 actionTarget: {target: "paneltbar", index: 18}
             }, {
-				// GEOATLAS mod: map properties for zoom levels
                 ptype: "gxp_mapproperties", 
                 actionTarget: {target: "paneltbar", index: 1}
             }, {
-                ptype: "gxp_geocodermetpointer" ,
+                ptype: "app_milepointsearch",
                 actionTarget: {target: "paneltbar", index: 17}
             }, {
-                ptype: "gxp_geocodermetpointer2" ,
+                ptype: "app_cadastresearch",
                 actionTarget: {target: "paneltbar", index: 17}
             }
                
