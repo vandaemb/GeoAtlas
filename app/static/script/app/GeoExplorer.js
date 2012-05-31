@@ -271,8 +271,7 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
             //GEOATLAS mod : added a container for a google geocoder, so it will render in time.
 				items: [
 				this.createTools(), 
-				{xtype: "container",width: 280,id: "geocoder"},
-				//{xtype: "container",width: 270,id: "wfsident8"}
+				{xtype: "container",width: 280,id: "geocoder"}
 			]
 			
         });
