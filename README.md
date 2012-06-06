@@ -1,6 +1,5 @@
 # GeoAtlas
 =======
-# GeoExplorer
 
 GeoAtlas is an extended instance of Opengeo/GeoExplorer, and has some added functionality
 
