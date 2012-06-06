@@ -76,6 +76,7 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
 					outputTarget: "tree"
             }, {
                 ptype: "gxp_addlayers",
+                addActionText: "Lagen toevoegen",
                 actionTarget: "layers.tbar",
                 uploadSource: "local",
                 search: false,
@@ -101,6 +102,7 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
                 actionTarget: {target: "paneltbar", index: 6}
             }, {
                 ptype: "gxp_wmsgetfeatureinfo", format: 'html', toggleGroup: this.toggleGroup,
+                addActionText: "Info opvragen",
                 actionTarget: {target: "paneltbar", index: 7}
             }, {
                 ptype: "gxp_featuremanager",

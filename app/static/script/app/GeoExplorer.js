@@ -262,8 +262,8 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
             disabled: true,
             id: 'paneltbar',
 				items: [
-				this.createTools(), 
-				{xtype: "container",width: 280,id: "geocoder"}
+				this.createTools(),
+				{xtype: "container",width: 170,id: "geocoder"}
 			]
 			
         });

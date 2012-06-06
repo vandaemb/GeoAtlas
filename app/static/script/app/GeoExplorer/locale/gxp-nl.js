@@ -11,7 +11,7 @@ GeoExt.Lang.add("nl", {
         untitledText: "Onbekend",
         addLayerSourceErrorText: "Probleem bij het ophalen van de Error WMS GetCapabilities ({msg}).\nControleer de URL en probeer opnieuw.",
         availableLayersText: "Beschikbare kaartlagen",
-        uploadText: "Lagen Uploaden",
+        uploadText: "Lagen uploaden",
         doneText: "Klaar"
     },
     

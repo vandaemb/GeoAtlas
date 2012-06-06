@@ -100,7 +100,7 @@ gxp.plugins.streetviewtool = Ext.extend(gxp.plugins.Tool, {
             tooltip: this.infoActionTip,
             menuText: "Streetview",
             text: "Streetview",
-            iconCls: "gxp-icon-play",
+            iconCls: "gxp-icon-streetview",
             toggleGroup: this.toggleGroup,
             enableToggle: true,
             allowDepress: true,
