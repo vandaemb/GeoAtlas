@@ -259,15 +259,96 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
             header: false
         });
         
+        var Navigation = new Ext.ButtonGroup({
+		   title   : 'Verslepen & zoomen',
+		   id: 'groupNavigation',
+		   columns : 6,
+		   layout  : 'table',
+		   height  : 73,
+		   items   : []
+		});
+		
+		var othersearch = new Ext.menu.Menu({
+			id: 'othersearchid',
+			items: []});
+		
+		var Search = new Ext.ButtonGroup({
+		   title   : 'Locatie zoeken',
+		   id: 'groupSearch',
+		   columns : 1,
+		   layout  : 'table',
+		   height  : 73,
+		   items   : [{xtype: "container",width: 170,id: "geocoder"}, 
+		   
+		   {
+			  text       : 'Andere zoekomdrachten',
+			  iconCls    : 'gxp-icon-find',
+			  arrowAlign : 'right',
+			  menu       : othersearch
+		   }]
+		});
+		
+        var Information = new Ext.ButtonGroup({
+		   title   : 'Onderzoeken',
+		   id: 'groupInformation',
+		   columns : 3,
+		   layout  : 'table',
+		   height  : 73,
+		   items   : []
+		});
+		
+		 var Editing = new Ext.ButtonGroup({
+		   title   : 'Editeren',
+		   id: 'groupEditing',
+		   columns : 2,
+		   layout  : 'table',
+		   height  : 73,
+		   items   : []
+		});
+		
+		var General = new Ext.ButtonGroup({
+		   title   : 'Algemeen',
+		   id: 'groupGeneral',
+		   columns : 5,
+		   layout  : 'table',
+		   height  : 73,
+		   items   : []
+		});
+		
+
+      
         this.toolbar = new Ext.Toolbar({
             disabled: true,
             id: 'paneltbar',
 				items: [
-				this.createTools(),
-				{xtype: "container",width: 170,id: "geocoder"}
-			]
+					this.createTools(),
+					General,
+					Navigation,
+					Information,
+					Editing,
+					Search
+					
+					
+					
+				]
 			
         });
+        
+        
+        //oldmenu
+                //this.toolbar = new Ext.Toolbar({
+				//disabled: true,
+				//id: 'paneltbar',
+				//items: [
+				//this.createTools(),
+				//Search,
+				//Navigation,
+				//
+			//]
+			
+        //});
+        
+        
         this.on("ready", function() {
             var disabled = this.toolbar.items.filterBy(function(item) {
                 return item.initialConfig && item.initialConfig.disabled;
@@ -364,9 +445,7 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
      * or :class:`GeoExplorer.Viewer` to provide specialized controls.
      */
     createTools: function() {
-        var tools = [
-            "-"
-        ];
+        var tools = [];
         return tools;
     },
     

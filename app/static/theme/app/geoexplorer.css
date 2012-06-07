@@ -1,3 +1,65 @@
+/* App-specific styles for table menu*/
+
+.x-btn .app-zoomnext {
+    background-image: url(img/app/zoom_next.png);
+}
+
+.x-btn .app-zoomlast {
+    background-image: url(img/app/zoom_last.png);
+}
+
+.x-btn .app-streetview {
+    background-image: url(img/app/streetview.png);
+}
+
+.x-btn .app-save {
+    background-image: url(img/app/save.png);
+}
+
+.x-btn .app-publish {
+    background-image: url(img/app/publish.png);
+}
+
+.x-btn .app-print {
+    background-image: url(img/app/print.png);
+}
+
+.x-btn .app-measure {
+    background-image: url(img/app/measure.png);
+}
+
+.x-btn .app-maxextent {
+    background-image: url(img/app/maxextent.png);
+}
+
+.x-btn .app-zoomin {
+    background-image: url(img/app/magnifier_zoom_in.png);
+}
+
+.x-btn .app-zoomout {
+    background-image: url(img/app/magnifier_zoom_out.png);
+}
+
+.x-btn .app-info {
+    background-image: url(img/app/information.png);
+}
+
+.x-btn .app-edit {
+    background-image: url(img/app/edit.png);
+}
+
+.x-btn .app-cursor {
+    background-image: url(img/app/cursor.png);
+}
+
+.x-btn .app-create {
+    background-image: url(img/app/create.png);
+}
+
+.x-btn .app-configuration {
+    background-image: url(img/app/configuration.png);
+}
+
 /* setting font fixes combobox rendering issues in IE. See
  * http://extjs.com/forum/showthread.php?t=72505 */
 body {
@@ -35,10 +97,6 @@ body {
 
 .x-btn .login {
     background-image: url(img/silk/door_in.png);
-}
-
-.x-btn .gxp-icon-streetview{
-    background-image:url(img/app/streetview.png);
 }
 
 .x-btn .logout {
@@ -128,8 +186,6 @@ body {
 .x-btn .icon-3D {
     background-image: url(img/geosilk/google_earth.png);
 }
-
-/* Pan- and Zoom- Panel Styles*/
 
 .olControlPanPanel div {
     background-image:url(../../externals/ext/resources/images/gray/panel/tool-sprites.gif);

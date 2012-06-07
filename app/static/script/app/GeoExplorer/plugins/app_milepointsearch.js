@@ -16,7 +16,7 @@ gxp.plugins.milepointsearch = Ext.extend(gxp.plugins.Tool, {
     ptype: "app_milepointsearch",
     
 
-    addActionMenuText: "Zoek op ident8",
+    addActionMenuText: "Referentiepaal zoeken",
 
 
     addActionTip: "Inzoomen naar een ident8 met referentiepunt",

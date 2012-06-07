@@ -99,11 +99,11 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
                 actionTarget: {target: "layers.contextMenu", index: 0}
             }, {
                 ptype: "gxp_navigation", toggleGroup: this.toggleGroup,
-                actionTarget: {target: "paneltbar", index: 6}
+                actionTarget: {target: "groupNavigation"}
             }, {
                 ptype: "gxp_wmsgetfeatureinfo", format: 'html', toggleGroup: this.toggleGroup,
                 addActionText: "Info opvragen",
-                actionTarget: {target: "paneltbar", index: 7}
+                actionTarget: {target: "groupInformation"}
             }, {
                 ptype: "gxp_featuremanager",
                 id: "featuremanager",
@@ -114,29 +114,31 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
                 featureManager: "featuremanager",
                 autoLoadFeature: true,
                 toggleGroup: this.toggleGroup,
-                actionTarget: {target: "paneltbar", index: 8}
+                actionTarget: {target: "groupEditing"}
             }, {
                 ptype: "gxp_measure", toggleGroup: this.toggleGroup,
                 controlOptions: {immediate: true},
-                actionTarget: {target: "paneltbar", index: 10}
+                actionTarget: {target: "groupInformation"}
             }, {
                 ptype: "gxp_zoom",
-                actionTarget: {target: "paneltbar", index: 11}
+                actionTarget: {target: "groupNavigation"}
             }, {                
                 ptype: "gxp_navigationhistory",
-                actionTarget: {target: "paneltbar", index: 13}
+                actionTarget: {target: "groupNavigation"}
             }, {
                 ptype: "gxp_zoomtoextent",
-                actionTarget: {target: "paneltbar", index: 15}
+                actionTarget: {target: "groupNavigation"}
             }, {
                 ptype: "gxp_print",
                 customParams: {outputFilename: 'GeoAtlas-print'},
                 printService: config.printService,
-                actionTarget: {target: "paneltbar", index: 5}
-            }, {
-                ptype: "gxp_googleearth",
-                actionTarget: {target: "paneltbar", index: 16}
-            }, {
+                actionTarget: {target: "groupGeneral"}
+            }, 
+            //{
+                //ptype: "gxp_googleearth",
+                //actionTarget: {target: "paneltbar", index: 16}
+            //}, 
+            {
                 ptype: "gxp_googlegeocoder",
                 outputTarget: "geocoder",
                 outputConfig: {
@@ -144,16 +146,16 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
 					}
             }, {
                 ptype: "app_streetviewtool", format: 'grid', toggleGroup: this.toggleGroup,
-                actionTarget: {target: "paneltbar", index: 18}
+                actionTarget: {target: "groupInformation"}
             }, {
                 ptype: "gxp_mapproperties", 
-                actionTarget: {target: "paneltbar", index: 1}
+                actionTarget: {target: "groupGeneral"}
             }, {
                 ptype: "app_milepointsearch",
-                actionTarget: {target: "paneltbar", index: 17}
+                actionTarget: {target: "othersearchid"}
             }, {
                 ptype: "app_cadastresearch",
-                actionTarget: {target: "paneltbar", index: 17}
+                actionTarget: {target: "othersearchid"}
             }
                
 
@@ -350,7 +352,7 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
         var tools = GeoExplorer.Composer.superclass.createTools.apply(this, arguments);
 
         this.loginButton = new Ext.Button();
-        tools.push(['->', this.loginButton]);
+        tools.push(['', this.loginButton]);
 
         if (this.authorizedRoles) {
             // unauthorized, show login button
@@ -366,13 +368,16 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
         }
 
         var aboutButton = new Ext.Button({
-            text: this.appInfoText,
+            text: "Over GeoAtlas",
             iconCls: "icon-geoexplorer",
             handler: this.displayAppInfo,
-            scope: this
+            scope: this,
+            iconAlign  : 'top',
+            rowspan    : '2',
+            scale      : 'medium'
         });
 
-        tools.unshift("-");
+        //tools.unshift("-");
         tools.unshift(new Ext.Button({
             tooltip: this.exportMapText,
             handler: function() {
@@ -381,7 +386,11 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
                 }, this);
             },
             scope: this,
-            iconCls: 'icon-export'
+            iconCls: 'app-publish',
+            text: 'Publiceren',
+            iconAlign  : 'top',
+            rowspan    : '2',
+            scale      : 'medium'
         }));
         tools.unshift(new Ext.Button({
             tooltip: this.saveMapText,
@@ -391,9 +400,13 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
                 }, this);
             },
             scope: this,
-            iconCls: "icon-save"
+            iconCls: "app-save",
+            iconAlign  : 'top',
+            rowspan    : '2',
+            scale      : 'medium',
+            text: "Opslaan"
         }));
-        tools.unshift("-");
+        //tools.unshift("-");
         tools.unshift(aboutButton);
         return tools;
     },
