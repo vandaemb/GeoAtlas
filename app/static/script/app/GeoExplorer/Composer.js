@@ -367,47 +367,47 @@ GeoExplorer.Composer = Ext.extend(GeoExplorer, {
             }
         }
 
-        var aboutButton = new Ext.Button({
-            text: "Over GeoAtlas",
-            iconCls: "icon-geoexplorer",
-            handler: this.displayAppInfo,
-            scope: this,
-            iconAlign  : 'top',
-            rowspan    : '2',
-            scale      : 'medium'
-        });
+        //var aboutButton = new Ext.Button({
+            //text: "Over GeoAtlas",
+            //iconCls: "icon-geoexplorer",
+            //handler: this.displayAppInfo,
+            //scope: this,
+            //iconAlign  : 'top',
+            //rowspan    : '2',
+            //scale      : 'medium'
+        //});
 
+        ////tools.unshift("-");
+        //tools.unshift(new Ext.Button({
+            //tooltip: this.exportMapText,
+            //handler: function() {
+                //this.doAuthorized(["ROLE_ADMINISTRATOR"], function() {
+                    //this.save(this.showEmbedWindow);
+                //}, this);
+            //},
+            //scope: this,
+            //iconCls: 'app-publish',
+            //text: 'Publiceren',
+            //iconAlign  : 'top',
+            //rowspan    : '2',
+            //scale      : 'medium'
+        //}));
+        //tools.unshift(new Ext.Button({
+            //tooltip: this.saveMapText,
+            //handler: function() {
+                //this.doAuthorized(["ROLE_ADMINISTRATOR"], function() {
+                    //this.save(this.showUrl);
+                //}, this);
+            //},
+            //scope: this,
+            //iconCls: "app-save",
+            //iconAlign  : 'top',
+            //rowspan    : '2',
+            //scale      : 'medium',
+            //text: "Opslaan"
+        //}));
         //tools.unshift("-");
-        tools.unshift(new Ext.Button({
-            tooltip: this.exportMapText,
-            handler: function() {
-                this.doAuthorized(["ROLE_ADMINISTRATOR"], function() {
-                    this.save(this.showEmbedWindow);
-                }, this);
-            },
-            scope: this,
-            iconCls: 'app-publish',
-            text: 'Publiceren',
-            iconAlign  : 'top',
-            rowspan    : '2',
-            scale      : 'medium'
-        }));
-        tools.unshift(new Ext.Button({
-            tooltip: this.saveMapText,
-            handler: function() {
-                this.doAuthorized(["ROLE_ADMINISTRATOR"], function() {
-                    this.save(this.showUrl);
-                }, this);
-            },
-            scope: this,
-            iconCls: "app-save",
-            iconAlign  : 'top',
-            rowspan    : '2',
-            scale      : 'medium',
-            text: "Opslaan"
-        }));
-        //tools.unshift("-");
-        tools.unshift(aboutButton);
+        //tools.unshift(aboutButton);
         return tools;
     },
 

@@ -297,6 +297,49 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
 		   items   : []
 		});
 		
+		var Application = new Ext.ButtonGroup({
+		   title   : 'Applicatie',
+		   id: 'groupApplication',
+		   columns : 4,
+		   layout  : 'table',
+		   height  : 73,
+		   items   : [        {
+            text: "Over",
+            iconCls: "icon-geoexplorer",
+            handler: this.displayAppInfo,
+            scope: this,
+            iconAlign  : 'top',
+            rowspan    : '2',
+            scale      : 'medium'
+        }, {
+            tooltip: this.exportMapText,
+            handler: function() {
+                this.doAuthorized(["ROLE_ADMINISTRATOR"], function() {
+                    this.save(this.showEmbedWindow);
+                }, this);
+            },
+            scope: this,
+            iconCls: 'app-publish',
+            text: 'Publiceren',
+            iconAlign  : 'top',
+            rowspan    : '2',
+            scale      : 'medium'
+        }, {
+            tooltip: this.saveMapText,
+            handler: function() {
+                this.doAuthorized(["ROLE_ADMINISTRATOR"], function() {
+                    this.save(this.showUrl);
+                }, this);
+            },
+            scope: this,
+            iconCls: "app-save",
+            iconAlign  : 'top',
+            rowspan    : '2',
+            scale      : 'medium',
+            text: "Opslaan"
+        }]
+		});
+		
 		 var Editing = new Ext.ButtonGroup({
 		   title   : 'Editeren',
 		   id: 'groupEditing',
@@ -321,12 +364,14 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
             disabled: true,
             id: 'paneltbar',
 				items: [
-					this.createTools(),
+					Application,
 					General,
 					Navigation,
 					Information,
 					Editing,
-					Search
+					Search,
+					'->',
+					this.createTools()
 					
 					
 					
