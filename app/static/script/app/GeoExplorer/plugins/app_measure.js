@@ -97,23 +97,23 @@ gxp.plugins.Measure = Ext.extend(gxp.plugins.Tool, {
                     symbolizer: {
                         "Point": {
                             pointRadius: 4,
-                            graphicName: "square",
+                            graphicName: "cross",
                             fillColor: "white",
                             fillOpacity: 1,
                             strokeWidth: 1,
                             strokeOpacity: 1,
-                            strokeColor: "#333333"
+                            strokeColor: "#00FF00"
                         },
                         "Line": {
                             strokeWidth: 3,
                             strokeOpacity: 1,
-                            strokeColor: "#666666",
+                            strokeColor: "#00FF00",
                             strokeDashstyle: "dash"
                         },
                         "Polygon": {
                             strokeWidth: 2,
                             strokeOpacity: 1,
-                            strokeColor: "#666666",
+                            strokeColor: "#00FF00",
                             fillColor: "white",
                             fillOpacity: 0.3
                         }
@@ -145,8 +145,9 @@ gxp.plugins.Measure = Ext.extend(gxp.plugins.Tool, {
             '<sup>2</sup>' :
             '';
 
-            return metric.toFixed(2) + " " + metricUnit + dim + "<br>" +
-                english.toFixed(2) + " " + englishUnit + dim;
+            return metric.toFixed(2) + " " + metricUnit + dim + "<br>";
+            // +
+            //    english.toFixed(2) + " " + englishUnit + dim;
         };
 
         var measureToolTip;
@@ -159,13 +160,15 @@ gxp.plugins.Measure = Ext.extend(gxp.plugins.Tool, {
                 measurepartial: function(event) {
                     cleanup();
                     measureToolTip = this.addOutput({
-                        xtype: 'tooltip',
+                        xtype: 'window',
                         html: makeString(event),
                         title: title,
                         autoHide: false,
                         closable: true,
                         draggable: false,
-                        mouseOffset: [0, 0],
+                        //mouseOffset: [30, 30],
+                        x: 310,
+                        y: 85,
                         showDelay: 1,
                         listeners: {hide: cleanup}
                     });

@@ -305,7 +305,7 @@ var GeoExplorer = Ext.extend(gxp.Viewer, {
 		   height  : 73,
 		   items   : [        {
             text: "Over",
-            iconCls: "icon-geoexplorer",
+            iconCls: "app-about",
             handler: this.displayAppInfo,
             scope: this,
             iconAlign  : 'top',

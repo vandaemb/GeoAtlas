@@ -1,15 +1,15 @@
 # GeoAtlas
-=======
 
-GeoAtlas is an extended instance of Opengeo/GeoExplorer, and has some added functionality
+GeoAtlas is fork of https://github.com/opengeo/GeoExplorer, and has some added functionality. 
 
-Project specific:
- - Cadastre search
- - Milepoint search
- - Seperate streetviewtool
+## Project specific:
+* Cadastre search
+* Milepoint search
+* Seperate streetviewtool
 
-Non-specific changes
-- Google geocoder
-- Mapproperties tool
+## Non-specific changes
+* Google geocoder
+* Mapproperties tool
+* Modified UI (ribbon menu)
+* Sketch tools (with import and export as gml)
 
-Note that this method is deprecated, please use the opengeo SDK (http://opengeo.org/technology/sdk/) to make your own application. I will switch to this method asap, I promise :-)

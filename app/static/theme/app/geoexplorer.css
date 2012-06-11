@@ -16,6 +16,10 @@
     background-image: url(img/app/save.png);
 }
 
+.x-btn .app-about {
+    background-image: url(img/app/favicon.png);
+}
+
 .x-btn .app-publish {
     background-image: url(img/app/publish.png);
 }
@@ -59,6 +63,40 @@
 .x-btn .app-configuration {
     background-image: url(img/app/configuration.png);
 }
+
+.x-btn .app-delete {
+    background-image: url(img/app/draw_eraser.png);
+}
+
+.x-btn .app-draw-line {
+    background-image: url(img/app/draw_line.png);
+}
+
+.x-btn .app-draw-points {
+    background-image: url(img/app/draw_points.png);
+}
+
+.x-btn .app-draw-polyline {
+    background-image: url(img/app/draw_polyline.png);
+}
+
+.x-btn .app-sketch {
+    background-image: url(img/app/sketch.png);
+}
+
+.x-btn .app-select {
+    background-image: url(img/app/draw_smudge.png);
+}
+
+.x-btn .app-erase {
+    background-image: url(img/app/dynamite.png);
+}
+
+
+
+
+
+
 
 /* setting font fixes combobox rendering issues in IE. See
  * http://extjs.com/forum/showthread.php?t=72505 */
